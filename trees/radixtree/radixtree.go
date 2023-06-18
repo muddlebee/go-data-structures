@@ -31,7 +31,7 @@ func NewRadix16Tree() *Radix16Tree {
 func (t *Radix16Tree) Insert(key string, value interface{}) {
 	node := t.root
 	for _, char := range key {
-		index := runeToIndex(char)
+		index := hexToDecimal(char)
 		if node.children[index] == nil {
 			node.children[index] = NewRadix16Node()
 		}
@@ -44,7 +44,7 @@ func (t *Radix16Tree) Insert(key string, value interface{}) {
 func (t *Radix16Tree) Search(key string) (interface{}, bool) {
 	node := t.root
 	for _, char := range key {
-		index := runeToIndex(char)
+		index := hexToDecimal(char)
 		if node.children[index] == nil {
 			return nil, false
 		}
@@ -53,7 +53,11 @@ func (t *Radix16Tree) Search(key string) (interface{}, bool) {
 	return node.value, true
 }
 
-func runeToIndex(char rune) int {
+/*
+*
+  - hexToDecimal converts a hexademical character to a decimal representation in the range 0-15
+*/
+func hexToDecimal(char rune) int {
 	if char >= '0' && char <= '9' {
 		return int(char - '0')
 	}
@@ -76,11 +80,11 @@ func printNode(node *Radix16Node, prefix string) {
 	}
 	for i, child := range node.children {
 		if child != nil {
-			printNode(child, fmt.Sprintf("%s%c", prefix, indexToRune(i)))
+			printNode(child, fmt.Sprintf("%s%c", prefix, decimalToHex(i)))
 		}
 	}
 }
-func indexToRune(index int) rune {
+func decimalToHex(index int) rune {
 	if index >= 0 && index <= 9 {
 		return rune('0' + index)
 	}

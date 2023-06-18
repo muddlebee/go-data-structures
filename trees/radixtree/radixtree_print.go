@@ -10,7 +10,7 @@ type Node struct {
 	value    interface{}
 }
 
-func main() {
+func print() {
 	// Create the nodes
 	nodeA := &Node{value: "A"}
 	nodeB := &Node{value: "B"}
