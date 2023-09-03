@@ -298,8 +298,10 @@ func (list *List) String() string {
 
 // Print prints all the elements of list
 func (list *List) Print() {
-	for element := list.first; element != nil; element = element.next {
+	element := list.first
+	for element != nil {
 		fmt.Println(element.value)
+		element = element.next
 	}
 }
 
