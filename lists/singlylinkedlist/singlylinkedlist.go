@@ -158,7 +158,7 @@ func (list *List) Values() []interface{} {
 	return values
 }
 
-//IndexOf returns index of provided element
+// IndexOf returns index of provided element
 func (list *List) IndexOf(value interface{}) int {
 	if list.size == 0 {
 		return -1
@@ -291,8 +291,16 @@ func (list *List) String() string {
 	for element := list.first; element != nil; element = element.next {
 		values = append(values, fmt.Sprintf("%v", element.value))
 	}
+	fmt.Println("Size: ", list.size)
 	str += strings.Join(values, ", ")
 	return str
+}
+
+// Print prints all the elements of list
+func (list *List) Print() {
+	for element := list.first; element != nil; element = element.next {
+		fmt.Println(element.value)
+	}
 }
 
 // Check that the index is within bounds of the list

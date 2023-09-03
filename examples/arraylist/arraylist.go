@@ -19,6 +19,7 @@ func main() {
 	_, _ = list.Get(100)                  // nil,false
 	_ = list.Contains("a", "b", "c")      // true
 	_ = list.Contains("a", "b", "c", "d") // false
+	_ = list.String()                     // "[a,b,c]"
 	list.Swap(0, 1)                       // ["b","a",c"]
 	list.Remove(2)                        // ["b","a"]
 	list.Remove(1)                        // ["b"]

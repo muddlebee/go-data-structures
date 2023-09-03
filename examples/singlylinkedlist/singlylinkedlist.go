@@ -5,12 +5,14 @@
 package main
 
 import (
+	"fmt"
 	sll "github.com/emirpasic/gods/lists/singlylinkedlist"
 	"github.com/emirpasic/gods/utils"
 )
 
 // SinglyLinkedListExample to demonstrate basic usage of SinglyLinkedList
 func main() {
+	fmt.Println("SinglyLinkedListExample")
 	list := sll.New()
 	list.Add("a")                         // ["a"]
 	list.Append("b")                      // ["a","b"] (same as Add())
@@ -20,6 +22,7 @@ func main() {
 	_, _ = list.Get(100)                  // nil,false
 	_ = list.Contains("a", "b", "c")      // true
 	_ = list.Contains("a", "b", "c", "d") // false
+	list.Print()                          // "[a,b,c]"
 	list.Remove(2)                        // ["a","b"]
 	list.Remove(1)                        // ["a"]
 	list.Remove(0)                        // []
