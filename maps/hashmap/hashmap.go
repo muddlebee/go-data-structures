@@ -89,3 +89,10 @@ func (m *Map) String() string {
 	str += fmt.Sprintf("%v", m.m)
 	return str
 }
+
+// print the map
+func (m *Map) Print() {
+	for key, value := range m.m {
+		fmt.Println(key, value)
+	}
+}
